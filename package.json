@@ -1,0 +1,26 @@
+{
+  "name": "ourSpace",
+  "version": "1.0.0",
+  "description": "a digital space to hang",
+  "main": "node server.js",
+  "scripts": {
+    "build:client": "esbuild src/client/index.ts --bundle --global-name=ourSpace --outfile=build/public/index.js && node -e \"require('fs').copyFileSync('src/client/index.html','build/public/index.html')\"",
+    "build:server": "tsc",
+    "build": "npm run build:client && npm run build:server",
+    "start": "node build/server.js",
+    "dev": "nodemon --watch src --ext ts,html --exec \"npm run build && npm start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node": "^22.22.3",
+    "ws": "^8.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "esbuild": "^0.27.4",
+    "nodemon": "^3.1.14",
+    "typescript": "^6.0.2"
+  }
+}
